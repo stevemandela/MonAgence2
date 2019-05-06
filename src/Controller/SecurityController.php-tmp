@@ -1,0 +1,24 @@
+
+Deprecated: The each() function is deprecated. This message will be suppressed on further calls in C:\Users\Lenovo\AppData\Roaming\Sublime Text 3\Packages\PHPTools\php.tools\codeFormatter.php on line 54
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+class SecurityController extends AbstractController {
+
+	/**
+	 * @Route("/login", name="login")
+	 */
+	public function login(AuthenticationUtils $authenticationUtils) {
+		$LastUsername = $authenticationUtils->getLastUsername();
+		$error        = $authenticationUtils->getLastAuthenticationError();
+		return $this->render('security/login.html.twig', [
+				'Last_username' => $LastUsername,
+				'error'         => $error
+			]);
+	}
+}
