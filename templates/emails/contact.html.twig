@@ -1,0 +1,53 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+
+        <mj-image width="100px" src="/assets/img/logo-small.png"></mj-image>
+
+        <mj-divider border-color="#F45E43"></mj-divider>
+
+        <mj-text font-size="20px" color="#F45E43" font-family="helvetica">
+        <tr>
+          <td align="left" style="">
+            <div>
+              <h1>Demande de contact {{ contact.property.title }}</h1>
+              <p>une nouvelle personne soufaiterais avoir des informations a propos du bien <a href="{{ url('property.show', {id: contact.property.id, slug: contact.property.slug}) }}">{{ contact.property.title }}</a></p>
+            </div>
+          </td>
+        </tr>
+          <table border="0" cellpadding="0" role="presentation" style="vertical-align:top;" width="100%">
+            <tr>
+              <td align="left" style="">
+                <table cellpadding="0" ceelspacing="0" width="100%" border="0">
+                   
+                  <tr>
+                    <td>Prenom</td>
+                    <td>{{ contact.firstname }}</td>
+                  </tr>
+                   <tr>
+                    <td>Nom</td>
+                    <td>{{ contact.lastname }}</td>
+                  </tr>
+                   <tr>
+                    <td>Telephone</td>
+                    <td>{{ contact.phone }}</td>
+                  </tr>
+                   <tr>
+                    <td>Email</td>
+                    <td>{{ contact.email }}</td>
+                  </tr>
+                   <tr>
+                    <td>Message</td>
+                    <td>{{ contact.message | nl2br }}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+           </mj-text>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

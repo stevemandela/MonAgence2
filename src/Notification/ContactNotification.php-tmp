@@ -10,7 +10,7 @@ use Twig\Environment;
 class ContactNotification {
 
 	/**
-	 * @var \Swift_mailer
+	 * @var \Swift_Mailer
 	 */
 	private $mailer;
 	/**
@@ -18,7 +18,7 @@ class ContactNotification {
 	 */
 	private $renderer;
 
-	public function __construct(\Swift_mailer $mailer, Environment $renderer) {
+	public function __construct(\Swift_Mailer $mailer, Environment $renderer) {
 		$this->mailer   = $mailer;
 		$this->renderer = $renderer;
 

@@ -2,30 +2,68 @@
 
 {% block title 'WSM Immobilier' %}
 {% block body %}
-    <div class="jumbotron text-center">
-         <h1>WSM Immobilier</h1>
-         <p>Votre maison près de vous</p>
+<div class="row">
+ <div id="fond">
+   <div id="contenu">
+     <h1>WSM Immobilier</h1>
+     <p>Votre maison près de vous</p>
+   </div>   
+ </div>
+ <style media="screen">
+   #fond {
+    background:url("https://cdn.pixabay.com/photo/2014/09/02/12/50/panorama-433610__340.jpg");
+    background-size: cover;
+    position:relative;
+    width:800%;
+    height:300px;
+    z-index:1;
+  }
+
+  #contenu {
+    position:relative;
+    text-align: center;
+
+    /*left:0;*/
+    margin-top: 8%;
+    color: blue;
+    /*width:100px;*/
+    /*background-color: blue;*/
+    z-index:10;
+  }
+</style>
+</div>
+
+<div class="container mb-4">
+ <h2>Les derniers biens</h2>
+ <div class="row flex">
+   {% for property in properties %}
+   
+   <div class="card mb-4">
+
+     {% if property.filename %}
+     <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height: 200px;">
+
+     {% else %}
+     <img src="{{'/images/properties/Empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height: 200px;" >
+     {% endif %}
+
+     <div class="card-body">
+      <h5 class="card-title">
+        <a href="{{ path('property.show', {slug: property.slug, id: property.id}) }}">
+          {{ property.title }}
+        </a>
+      </h5>
+
+      <p class="card-text">{{property.surface }} m² - {{property.city }} ({{ property.postalCode }})</p>
+      <div class="text-primary" style="font-size: :2rem; font-weight: bold;">
+        {{ property.formattedPrice }}
+      </div>
     </div>
+  </div>
+  
 
-    <div class="container">
-         <h2>Les derniers biens</h2>
-         <div class="row flex">
-           {% for property in properties %}
-               <div class="col-3">
-                   <div class="card">
-                       <div class="card-body">
-
-                           <h5 class="card-title">
-                               <a href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title }}</a>
-                           </h5>
-                           <p class="card-text">{{ property.city }} ({{ property.postalCode }})</p>
-                           <div class="text-primary" style="font-weight: bold; font-size: 2rem">{{ property.formattedPrice }} $</div>
-                       </div>
-                   </div>
-               </div>
-
-           {% endfor %}
-         </div>
-    </div>
+  {% endfor %}
+</div>
+</div>
 
 {% endblock %}

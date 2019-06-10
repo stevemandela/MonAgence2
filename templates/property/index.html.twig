@@ -3,7 +3,8 @@
 {% block title 'Tous nos biens' %}
 {% block body %}
 
-    <div class="jumbotron">
+<div class="row">
+    <div id="fond1">
     	<div class="container">
     		{{ form_start(form) }}
     		<div class="form-row align-items-end">
@@ -22,23 +23,47 @@
     		{{ form_end(form) }}
     	</div>
     </div>
+    <style media="screen">
+        #fond1 {
+        background:url("https://cdn.pixabay.com/photo/2014/09/02/12/50/panorama-433610__340.jpg");
+        background-size: cover;
+        position:relative;
+        width:800%;
+        height:300px;
+        z-index:1;
+    }
 
-    <div class="container mt-4">
-         <h1>Voir tous nos biens</h1>
-         
-        <div class="row">
-        	
-        	{% for property in properties %}
-             
-              <div class="col-md-4">
-             	 {% include 'property/_property.html.twig' %}
-              </div>
-           
-            {% endfor %}
-        </div>
+    .container {
+        position:relative;
+        text-align: center;
 
-        <div class="pagination">
-        	{{ knp_pagination_render(properties) }}
-        </div>
-    </div>
+        /*left:0;*/
+        margin-top: 8%;
+        /*color: blue;
+        /*width:100px;*/
+        /*background-color: blue;
+        z-index:10;**/
+    }
+   
+</style>
+</div>
+
+<div class="container mt-4">
+   <h1>Voir tous nos biens</h1>
+
+   <div class="row">
+
+       {% for property in properties %}
+
+       <div class="col-md-4">
+         {% include 'property/_property.html.twig' %}
+     </div>
+
+     {% endfor %}
+ </div>
+
+ <div class="pagination">
+   {{ knp_pagination_render(properties) }}
+</div>
+</div>
 {% endblock %}

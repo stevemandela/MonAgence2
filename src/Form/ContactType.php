@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 //use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use App\Entity\Contact;
 
 
@@ -22,7 +23,7 @@ class ContactType extends AbstractType
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
             ->add('phone', TextType::class)
-            ->add('email', TextType::class)
+            ->add('email', EmailType::class)
             ->add('message', TextareaType::class)
         ;
     }
